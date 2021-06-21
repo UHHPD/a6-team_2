@@ -20,7 +20,7 @@ int main() {
   std::unique_ptr<Zylindermantel> zm(new Zylindermantel(ZM_R, ZM_L));
   std::unique_ptr<Vollzylinder> vz(new Vollzylinder(ZM_R, ZM_L));
 
-
+  double d = 0;
   double K = 0;
   double J = 0;     // Massentraegheitsmoment
   double m = M / N; // Masse eines Massenpunktes
@@ -33,9 +33,11 @@ int main() {
     double s = (((y-a).kreuz(u)).betrag())/u.betrag(); //|n|/|u|
     // std::cout << x << " :" << r << std::endl;
     // addiere Beitrag des Massenpunktes zum Traegheitsmoment
+   
     J += m * r * r;
     K += m * s * s;
   }
+  d = a.betrag();
   std::cout << "Massentraegheitsmoment fuer einen Zylindermantel"
             << " mit a = " << a << " und u = " << u << ": " << J << std::endl;
   std::cout << "Massentraegheitsmoment fuer einen Vollzylinder"
